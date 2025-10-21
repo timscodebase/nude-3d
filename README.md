@@ -36,13 +36,16 @@ This cross-platform (iOS/Android) mobile app allows users to capture a photo of 
 
 1. Clone the repository:
 
-git clone <https://github.com/yourusername/3d-nude-model-app.git>
-cd 3d-nude-model-app
+  ```bash
+  git clone https://github.com/yourusername/3d-nude-model-app.git
+  cd 3d-nude-model-app
+  ```
 
 2. Install dependencies:
 
-````bash
-npm install
+  ````bash
+  npm install
+  ```
 
 3. For AI models: Download pre-quantized models from Hugging Face and place in `assets/models/` (see `PLANNING.md` for details). Use `expo install` for Expo-compatible packages like `expo-camera`, `expo-gl`.
 4. Start the development server:
