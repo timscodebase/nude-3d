@@ -1,59 +1,43 @@
-# GEMINI.md: Integrating Google Gemini API
+# Gemini Code Assistant Guidelines
 
-## Overview
+This document provides guidelines for using the Gemini code assistant in this project. Adhering to these guidelines will ensure that the AI-generated code is consistent with the project's style and conventions.
 
-This document outlines the integration of Google's Gemini API (Gemini 1.5 Pro or Flash) into the 3D Nude Model Generator App for enhanced remote processing. Gemini serves as a lightweight, multimodal LLM for tasks like:
+## Project Overview
 
-- Generating precise prompts for diffusion-based texturing (e.g., "Generate a detailed skin texture description for a [body type] nude model in [lighting]").
-- Image captioning to refine pose estimation (e.g., describe clothing/occlusions for better "undressing").
-- Fallback reasoning: Analyze low-confidence on-device outputs and suggest user actions (e.g., "Reposition for full-body view").
+This is a cross-platform mobile app built with React Native and Expo. It allows users to generate a 3D nude model from a single photo. The app uses on-device AI for privacy and speed, with an optional remote fallback for enhanced accuracy.
 
-**Why Gemini?**
+## Tech Stack
 
-- Multimodal: Handles images + text, ideal for photo analysis.
-- Low-latency: Flash model (~200ms responses) fits remote fallback.
-- Cost-effective: Free tier (15 RPM) for prototyping; scales to $0.35/1M tokens.
-- JS SDK: Seamless with React Native via `@google/generative-ai`.
+- **Frontend:** React Native with Expo
+- **JavaScript Engine:** Hermes
+- **AI/ML:** TensorFlow.js
+- **3D Rendering:** Three.js (via `expo-three`)
+- **Package Manager:** `pnpm`
 
-**Scope**: Remote-only (privacy-focused); on-device remains TF.js/MediaPipe. Estimated integration time: 1-2 weeks.
+## Development Environment
 
-## Setup and Authentication
+- **Node.js:** v18+
+- **Expo CLI:** `pnpm install -g @expo/cli`
+- **Dependencies:** `pnpm install`
+- **Run:** `pnpm start`
 
-1. **API Key**:
-   - Get from [Google AI Studio](https://aistudio.google.com/app/apikey).
-   - Store securely: Use Expo's `expo-constants` + `.env` (via `dotenv`):
+## Coding Style and Conventions
 
-     ```bash
-     # .env (add to .gitignore!)
-     GEMINI_API_KEY=your_api_key_here
-     ```
+- **Language:** TypeScript
+- **Linter:** ESLint (`pnpm run lint`)
+- **Component-Based Architecture:** Follow the existing component-based architecture. Create new components in the `components/` directory.
+- **Styling:** Use the `constants/theme.ts` file for consistent styling.
+- **State Management:** Use React hooks for state management. For more complex state, consider using a state management library like Zustand or Redux.
+- **Navigation:** Use Expo Router for navigation.
+- **File Naming:** Use kebab-case for file names (e.g., `my-component.tsx`).
 
-   - In code: `import Constants from 'expo-constants'; const apiKey = Constants.expoConfig.extra.geminiApiKey;`
+## Commits and Pull Requests
 
-2. **Install SDK**:
+- **Commit Messages:** Follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
+- **Pull Requests:** Provide a clear description of the changes and link to any relevant issues.
 
-```bash
-  npx expo install @google
-  /generative-ai
-```
+## Contact
 
-- Compatible with RN 0.82/Hermes; no native modules needed.
+If you have any questions, please contact the project maintainer:
 
-3. **Basic Config** (in `src/services/gemini.ts`):
-
-```typescript
-import { GoogleGenerativeAI } from '@google/generative-ai';
-
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
-const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
-
-export async function generatePrompt(imageUri: string, bodyDesc: string): Promise<string> {
-  const prompt = `Analyze this photo of a ${bodyDesc} person. Generate a detailed, photorealistic prompt for nude skin texturing on a 3D SMPL-X model. Focus on skin tone, lighting, and anatomy. Output only the prompt.`;
-  
-  const result = await model.generateContent([
-    prompt,
-    { inlineData: { data: imageUri, mimeType: 'image/jpeg' } }  // Base64 or URI
-  ]);
-  return result.response.text();
-}
-```
+- **Tim Smith:** [tim.smith.hdg@gmail.com](mailto:tim.smith.hdg@gmail.com)
