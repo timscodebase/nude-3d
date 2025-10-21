@@ -1,50 +1,33 @@
-# Welcome to your Expo app 👋
+# 3D Nude Model Generator App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Overview
 
-## Get started
+This cross-platform (iOS/Android) mobile app allows users to capture a photo of a person and generate a 3D nude model using on-device AI for privacy and speed, with optional remote fallback for enhanced accuracy. The pipeline includes pose estimation, 3D body reconstruction, and generative texturing to simulate nudity.
 
-1. Install dependencies
+**Key Features:**
+- Single-photo capture with real-time pose detection.
+- On-device 3D mesh fitting (using SMPL-X parametric models).
+- AI-driven "undressing" via diffusion-based skin texturing.
+- Interactive 3D viewer with export options (GLB/OBJ).
+- Fallback to cloud processing for low-confidence inputs.
 
-   ```bash
-   npm install
-   ```
+**Tech Stack:**
+- Frontend: Expo with React Native 0.82 (Hermes JS engine enabled for performance).
+- AI/ML: TensorFlow.js (tfjs) for on-device models (MediaPipe via @mediapipe/tasks-vision, Ultraman/DeepHuman via ONNX Runtime React Native, lightweight Stable Diffusion via tfjs for texturing).
+- Backend (optional): FastAPI on AWS Lambda for remote inference.
+- Rendering: React Native Three.js (via expo-three) for 3D visualization.
+- Development: Expo CLI for easy builds and over-the-air updates.
 
-2. Start the app
+**Disclaimer:** This project is for educational/experimental purposes. Users must ensure consent and comply with local laws regarding image processing and nudity simulation. Ethical use is strongly encouraged.
 
-   ```bash
-   npx expo start
-   ```
+## Quick Start
 
-In the output, you'll find options to open the app in a
+### Prerequisites
+- Node.js (v18+): [Install Guide](https://nodejs.org/)
+- Expo CLI: `npm install -g @expo/cli`
+- Android Studio (for Android) or Xcode (for iOS).
+- Git for cloning the repo.
+- Hermes: Enabled by default in RN 0.82; no extra setup needed.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### Installation
+1. Clone the repository:
