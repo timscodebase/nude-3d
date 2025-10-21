@@ -41,14 +41,20 @@ This cross-platform (iOS/Android) mobile app allows users to capture a photo of 
   cd 3d-nude-model-app
   ```
 
-2. Install dependencies:
+1. Install dependencies:
 
-  ````bash
+  ```bash
   npm install
   ```
 
-3. For AI models: Download pre-quantized models from Hugging Face and place in `assets/models/` (see `PLANNING.md` for details). Use `expo install` for Expo-compatible packages like `expo-camera`, `expo-gl`.
-4. Start the development server:
+1. For AI models: Download pre-quantized models from Hugging Face and place in `assets/models/` (see `PLANNING.md` for details). Use `expo install` for Expo-compatible packages like `expo-camera`, `expo-gl`.
+1. Start the development server:
+
+  ```bash
+  npx expo start
+  ```
+
+- Scan QR code with Expo Go app on iOS/Android for testing.
 
 ```bash
   npx expo start
