@@ -41,3 +41,4 @@ app-example
 # generated native folders
 /ios
 /android
+assets/models/Stable-Diffusion-v2.1/
