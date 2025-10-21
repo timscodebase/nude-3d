@@ -41,4 +41,8 @@ app-example
 # generated native folders
 /ios
 /android
-assets/models/Stable-Diffusion-v2.1/
+
+# models
+/assets/models/MediaPipe-Pose-Estimation
+/assets/models/Stable-Diffusion-v2.1/
+/assets/models/Ultraman
